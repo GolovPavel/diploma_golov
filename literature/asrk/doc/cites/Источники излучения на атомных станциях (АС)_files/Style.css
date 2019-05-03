@@ -1,0 +1,228 @@
+body{
+  	background: #ffffff url("Backgrnd.gif");
+  	background-attachment: fixed;
+  	background-repeat:repeat-x;
+	font-family:Arial;
+	font-size:12pt;
+}
+
+body.header{
+  	background: #ffffff url("Compas.jpg");
+  	background-attachment: fixed;
+  	background-repeat:no-repeat;
+	margin:0 100 0 100 ;
+}
+
+
+body.Index{
+  	background: #ffffff url("Backgrnd.gif");
+  	background-attachment: fixed;
+  	background-repeat:repeat-x;
+	margin:0 100 0 100 ;
+}
+
+table.navigator{
+  	width:100%;
+	align:center;
+}
+
+table.navigator td{
+	font-family:Arial;
+	font-size:10pt;
+	color:#008000;
+	padding:0.5em 0.5em 0.5em 0.5em;
+	vertical-align:top;
+}
+
+div.header{
+  	width:100%;
+  	background:#f0f0ff url("Label.gif"); 
+  	background-repeat:no-repeat;
+  	background-position:0.25em;
+	font-family:Arial;
+	font-size:14pt;
+	font-weight:bold;
+	color:blue;
+	padding:0.5em 0.5em 0.5em 2.5em;
+ 	border:1px solid #000080;
+	margin:0.5em 0 0.5em 0;
+}
+
+div.subheader{
+  	width:100%;
+  	background:#f0f0ff;
+	font-family:Arial;
+	font-size:12pt;
+	font-weight:bold;
+	color:blue;
+	padding:1px 10px 1px 10px;
+	margin:0.5em 0 0.5em 0;
+}
+
+div.purpose{
+  	width:100%;
+  	background:#f0f0ff;
+  	border:1px solid #000080;
+	font-family:Arial;
+	font-size:10pt;
+	padding:0.5em 1.5em 0.5em 1.5em;
+	margin:0.5em 0 0.5em 0;
+}
+
+div.selection{
+  	width:100%;
+  	background:#fffff0;
+  	border:1px solid #000000;
+	font-family:Arial;
+	font-size:12pt;
+	padding:0.5em 1.5em 0.5em 1.5em;
+	margin:0.5em 0 0.5em 0;
+}
+
+div.resume{
+  	width:100%;
+  	background:#fff0f0 url("aexclaim.gif");
+  	background-repeat:no-repeat;
+ 	border:1px solid #800000;
+	font-family:Arial;
+	font-size:12pt;
+	padding:0.5em 2.5em 0.5em 2.5em;
+	margin:0.5em 0 0.5em 0;
+}
+
+div.question{
+  	width:100%;
+  	background:#f0fff0;
+  	border:1px solid #008000;
+	font-family:Arial;
+	font-size:10pt;
+	padding:0.5em 1.5em 0.5em 1.5em;
+	margin:0.5em 0 0.5em 0;
+}
+
+div.data{
+  	width:100%;
+  	background:#fffff0;
+  	border:1px solid #808000;
+	font-family:Arial;
+	font-size:12pt;
+	padding:0.5em 0.5em 0.5em 1.5em;
+	margin:0.5em 0 0.5em 0;
+}
+
+LI { margin-bottom: 4px
+}
+
+a.ref{	color:        blue;
+	cursor:	      auto;
+        font-family:  arial;
+	font-size:12pt;         
+}
+
+hr{ 	height:1px;      
+	width:"100%";
+}
+
+a.menu{	
+    	width:100%;
+	heigth:100%;
+	cursor:hand;
+	text-decoration:none;
+    	font-family:Arial;         
+	font-size:12pt;
+	font-weight:normal;
+	font-style:normal;
+	text-align:left;
+	border:1px #FFFFFF none;
+	padding:1px 10px 1px 10px;
+   	background:none;
+	vertical-align: middle;
+	color:#606060;
+}
+
+a.menu:hover{
+   	color: #ff0000;
+   	border: 1px #0000ff none;
+   	background-color:#fff0f0;
+}
+
+a.menu:active{
+    	color: #ff0000;
+    	border: 1px #FF0000 none;
+    	background-color:#fff0f0;
+}
+a.alpha{width:100%;
+	heigth:100%;
+	cursor:	default;
+	text-decoration:none;
+        font-family:Arial;         
+	font-size:9pt;
+	font-weight:normal;
+	font-style:normal;
+	text-align:center;
+	border:1px none;
+	border-top-color:white;
+	border-right-color:black;
+	border-bottom-color:black;
+	border-left-color:white;
+	padding-left:4px;
+	padding-right:4px;
+        background: #CCCCCC;
+	color: #666666;
+}
+
+a.alpha:hover{
+	border-color:red;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #0000CC;
+	background-color: #C1F2FF;
+	cursor: hand;
+}
+
+a.alpha:active{
+	border-color:black white white black;
+        background: rgb(255,220,220);
+	color: #FF0000
+}
+
+table.data{
+	border:none;
+	border-collapse: collapse;
+	margin-right:1em;
+}
+                   
+table.data td{
+	background:#fffff0;
+	padding:0.25em 1em 0.25em 1em;
+	spacing:0 0 0 0;
+	border-color:#000000
+}
+
+p.index{	
+    	width:100%;
+	heigth:100%;
+	cursor:hand;
+	text-decoration:none;
+    	font-family:Arial;         
+	font-size:12pt;
+	font-weight:normal;
+	font-style:normal;
+	text-align:left;
+	border:1px #FFFFFF none;
+	padding:1px 10px 1px 10px;
+   	background:none;
+	vertical-align: middle;
+	color:#606060;
+}
+
+p.index:hover{
+   	color: #ff0000;
+   	border: 1px #0000ff none;
+   	background-color:#fff0f0;
+}
+
+p.index:active{
+    	color: #ff0000;
+    	border: 1px #FF0000 none;
+    	background-color:#fff0f0;
+}
