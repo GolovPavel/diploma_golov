@@ -1,17 +1,21 @@
-\input{staff/preamble}
+\documentclass[a4paper,14pt,russian]{extreport}
 
-\input{staff/macro_glob}
-
+\input{preamble/preamble} 
+ 
 \begin{document}
 
-	\input{title}
+\input{title}
 
-	\setcounter{page}{2}
+\setcounter{page}{2}
 
-	\input{table_of_contents}
+\tableofcontents
 
-	\input{content}
+\clearpage
 
-	% \input{references}
+\input{introduction}
+
+\clearpage
+
+\input{biblio}
 
 \end{document}
