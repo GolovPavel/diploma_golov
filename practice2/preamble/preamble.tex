@@ -1,0 +1,50 @@
+% Необходим для установки нестандартного типа документа
+\usepackage{extsizes}
+
+% Настраивает отступы от границ страницы.
+\usepackage{geometry}
+\geometry{left=3cm}
+\geometry{right=1cm}
+\geometry{top=2cm}
+\geometry{bottom=2cm}
+
+% Делаем pdf файл search­able и copy-able
+\usepackage{cmap} 
+
+% Поддержка русского языка
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+% Устанавливаем кодировку исходных файлов
+\usepackage[utf8]{inputenc}
+
+% Устанавливаем стандартным шрифтом Times New Roman
+\input{fonts/fonts_linux.tex}
+\renewcommand{\rmdefault}{ftm}
+
+% Для вставки картинок
+\usepackage{graphicx} 
+
+% Математические дополнения от АМС
+\usepackage{amssymb,amsfonts,amsmath,amsthm} 
+
+% Отделять первую строку раздела абзацным отступом тоже
+\usepackage{indentfirst} 
+
+% Улучшенное форматирование таблиц
+\usepackage{makecell}
+\usepackage{multirow} 
+
+% Нижние подчеркивания
+\usepackage{ulem} 
+ 
+ % Полуторный межстрочный интервал
+\usepackage{setspace}
+\onehalfspacing
+
+% Настройка заголовков документа
+\input{preamble/headers}
+
+% Настройка оглавления
+\input{preamble/toc}
