@@ -1,0 +1,14 @@
+% Настройка таблиц и рисунков
+\usepackage[tableposition=top]{caption}
+\usepackage{subcaption}
+
+\DeclareCaptionLabelFormat{gostfigure}{Рисунок #2}
+\DeclareCaptionLabelFormat{gosttable}{Таблица #2}
+\DeclareCaptionLabelSeparator{gost}{~---~}
+\captionsetup{labelsep=gost}
+\captionsetup[figure]{labelformat=gostfigure}
+\captionsetup[table]{labelformat=gosttable}
+
+\renewcommand{\thesubfigure}{\asbuk{subfigure}}
+
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
