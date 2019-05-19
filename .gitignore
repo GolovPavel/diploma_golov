@@ -3,7 +3,7 @@
 *.aux
 *.bbl
 *.out
-*.pdf
+practice/**/*.pdf
 *.gz
 *.toc
 *.fls
