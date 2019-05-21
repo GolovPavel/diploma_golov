@@ -1,7 +1,7 @@
 % Настройка таблиц и рисунков
 \usepackage[tableposition=top]{caption}
-\usepackage{subcaption}
 
+% Подписи к таблицам и рисункам
 \DeclareCaptionLabelFormat{gostfigure}{Рисунок #2}
 \DeclareCaptionLabelFormat{gosttable}{Таблица #2}
 \DeclareCaptionLabelSeparator{gost}{~---~}
@@ -9,6 +9,8 @@
 \captionsetup[figure]{labelformat=gostfigure}
 \captionsetup[table]{labelformat=gosttable}
 
-\renewcommand{\thesubfigure}{\asbuk{subfigure}}
-
+% Особый тип колонок
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+% Путь к картинкам
+\graphicspath{{img/}}
