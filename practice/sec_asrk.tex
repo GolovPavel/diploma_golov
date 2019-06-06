@@ -191,9 +191,9 @@ $^{10}\text{B}$(n, $2\alpha$)$^{3}\text{H}$; в ходе активации де
 Как было сказано в разделе \ref{sec_gas_nuclides}, в случае разгерметизации оболочек \ac{tvel}ов в теплоноситель 
 первого контура могут попасть следующие радионуклиды, образующиеся в результате реакции деления ядер топлива: изотопы 
 иода ($^{131}\text{I}$, $^{132}\text{I}$, $^{133}\text{I}$, $^{134}\text{I}$, $^{135}\text{I}$), изотопы, входящие в 
-состав аэрозолей ($^{134}\text{Cs}$, $^{137}\text{Cs}$, $^{138}\text{Cs}$, $^{88}\text{Rb}$, $^{60}\text{Co}$), инертные 
-радиоактивные газы ($^{133}\text{Xe}$, $^{135}\text{Xe}$, $^{137}\text{Xe}$, $^{138}\text{Xe}$, $^{85}\text{Kr}$, 
-$^{87}\text{Kr}$, $^{88}\text{Kr}$).
+состав аэрозолей ($^{134}\text{Cs}$, $^{137}\text{Cs}$, $^{138}\text{Cs}$, $^{88}\text{Rb}$), инертные радиоактивные 
+газы ($^{133}\text{Xe}$, $^{135}\text{Xe}$, $^{137}\text{Xe}$, $^{138}\text{Xe}$, $^{85}\text{Kr}$, $^{87}\text{Kr}$, 
+$^{88}\text{Kr}$), а так же тритий ($^{3}\text{H}$).
 
 Изменение концентрации i-ого нуклида, который образуется под оболочкой твэла в результате деления, определяется формулой 
 \ref{eq_tvel_conc}.
@@ -384,3 +384,46 @@ $27 \times 20 = 540$.
     \item $\nu_{f}$ --- выход нейтронов на одно деление ядер топлива;
     \item $E_{f}$ --- энергия, выделяемая в результате одного деления ядер топлива (Дж).
 \end{description}
+
+Учитывая этот коэффициент, выражение \ref{eq_tvel_conc_time_discr} принимает вид \ref{eq_tvel_conc_time_discr_2}:
+
+\begin{equation}
+    \label{eq_tvel_conc_time_discr_2}
+    c_{i}(t) = \frac{c_{i}(t - \Delta t) + \gamma_{i} \Sigma_{f} k \phi \Delta t}{1 + \lambda_{i} \Delta t}
+\end{equation}
+
+Приравняв в выражении \ref{eq_tvel_conc_no_fail_rods} частную производную концентрации радионуклидов по времени к 
+нуклю получим равновесную концентрацию i-ого нуклида под оболочкой \ac{tvel}а (формула \ref{eq_tvel_equilibrium_conc}):
+
+\begin{equation}
+    \label{eq_tvel_equilibrium_conc}
+    c_{i}^{0} = \frac{\gamma_{i} \Sigma_{f} k \phi}{\lambda_{i}} 
+\end{equation}
+
+Активность радионуклида определяется как количество распадов нуклида в единицу времени \cite{gusev_def}. Активность 
+i-ого радионуклида в теплоносителе связана с концентрацией радионуклида через постоянную распада (формула 
+\ref{eq_activ}):
+
+\begin{equation}
+    \label{eq_activ}
+    \widetilde{A_{i}} = \lambda_{i} \widetilde{c}_{i}
+\end{equation}
+
+Учитывая формулу \ref{eq_activ} преобразуем выражение \ref{eq_coolant_conc_3}. Результат представлен в конечной формуле 
+\ref{eq_coolant_conc_4}:
+
+\begin{equation}
+    \label{eq_coolant_conc_4}
+    \frac{\partial \widetilde{c}_{i}}{\partial t} = -\widetilde{A_{i}} + \widetilde{A_{i}^{0}}
+        (1 + z_{i}N_{failedRods})\frac{c_{i}}{c_{i}^{0}}\frac{\sum_{j=1}^{540} V_{j}\overline{\rho}}{V_{j}\rho_{j}}
+        (\frac{P_{0}}{P})^{\alpha_{i}}
+\end{equation}
+
+где:
+\begin{description}
+    \item $\widetilde{A_{i}}$ --- активность i-ой примеси в теплоносителе 1-ого контура;
+    \item $\widetilde{A_{i}^{0}}$ --- равновесная активность i-ой примеси в теплоносителе первого контура.
+\end{description}
+
+Значения равновесных активностей и другие характеристики радионуклидов, образующихся в топливе, использующиеся в 
+текущей модели, приведены в приложении Б.
