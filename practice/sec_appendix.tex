@@ -1,11 +1,11 @@
 \likechapter{Приложение А}
 
-\begin{center}
-	\textbf{Классификация неровностей поверхности и рельефа \cite{mlyavaya}}
-\end{center}
-
-\begin{table}[ht]
+\renewcommand{\thetable}{\textmd{A.}\arabic{table}}
+\setcounter{table}{0}
+\begin{table}[ht!]
 	\small
+    \caption{Классификация неровностей поверхности и рельефа \cite{mlyavaya}.}
+    \label{table_z0}
 	\setlength{\extrarowheight}{0.5mm}
 	\centering
     \begin{tabular}{|M{0.03\textwidth}|M{0.5\textwidth}|M{0.18\textwidth}|M{0.18\textwidth}|}
@@ -46,12 +46,12 @@
 
 \likechapter{Приложение Б}
 
-\begin{center}
-    \textbf{Основные характеристики радионуклидов, образующися в топливе}
-\end{center}
-
+\renewcommand{\thetable}{\textmd{Б.}\arabic{table}}
+\setcounter{table}{0}
 \begin{table}[ht]
     \small
+    \caption{Основные характеристики радионуклидов, образующися в топливе.}
+    \label{table_tvel_radio}
     \setlength{\extrarowheight}{0.5mm}
     \centering
     \begin{tabular}{|M{0.225\textwidth}|M{0.225\textwidth}|M{0.225\textwidth}|M{0.225\textwidth}|}
@@ -82,3 +82,26 @@
     \hline
     \end{tabular}
 \end{table}
+
+\clearpage
+
+\likechapter{Приложение В}
+
+\renewcommand{\thefigure}{\textmd{В.}\arabic{table}}
+\setcounter{figure}{0}
+
+\begin{figure}[ht]
+\centering
+    \includegraphics[height=7.9cm]{O16_np_cross}
+    \captionsetup{justification=centering}
+    \caption{Энергетическая зависимость микроскопического сечения реакции (n, p) на ядре $^{16}\text{O}$ \cite{janis}.}
+    \label{fig_O16_cross}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+    \includegraphics[height=7.9cm]{Ar40_ngamma_cross}
+    \captionsetup{justification=centering}
+    \caption{Энергетическая зависимость микроскопического сечения реакции (n, $\gamma$) на ядре $^{40}\text{Ar}$ \cite{janis}.}
+    \label{fig_Ar40_cross}
+\end{figure}

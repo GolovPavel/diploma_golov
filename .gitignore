@@ -14,3 +14,4 @@ practice/**/*.pdf
 *.gls
 *.glg
 *.fdb_latexmk
+*.doc#
