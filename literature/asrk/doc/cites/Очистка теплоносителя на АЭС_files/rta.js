@@ -1,1 +1,0 @@
-crtg_content = ''; (function(){document.cookie = 'crtg_rta=' + escape(crtg_content) + '; path=/; expires=Thu, 21 Jul 2016 17:01:48 GMT; domain=narod.ru';})();
