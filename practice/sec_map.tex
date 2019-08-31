@@ -5,9 +5,42 @@
 % 2) Принцип анализа свойств местности
 % 3) Разработка программного кода
 
+\section{Модель переноса радиоактивных примесей в атмосфере}
+
+Модель переноса радиоактивных примесей в атмосфере, которая используется при разработке проекта \ac{ascro}, основывается 
+на решении полуэмперического уравнения адвекции-диффузии \cite{elokhin} методом конечных элементов. Рассмотрим это 
+уравнение, описывающее перенос радиоактивной примеси в атмосфере (формула \ref{eq_diffusion}): 
+
+\begin{equation}
+    \label{eq_diffusion}
+    \frac{\partial q}{\partial t} + div(\vec{U}q) + \sigma q = Dq + f
+\end{equation}
+
+с начальными условиями \ref{eq_diffusion_initials}:
+
+\begin{equation}
+	\label{eq_diffusion_initials}
+    q(x, y, z, t)|_{t=0} = 0
+\end{equation}
+
+и граничными условиями \ref{eq_edges_1} --- \ref{eq_edges_3}:
+
+\begin{equation}
+	\label{eq_edges_1}
+	q(x, y, z, t)|_{x=0}=0; \,\,\,\,\,\,  q(x, y, z, t)|_{y=0}=0;
+\end{equation}
+\begin{equation}
+	\label{eq_edges_2}
+	q(x, y, z, t)|_{x \rightarrow \infty}=0; \,\,\,\,\,\,  q(x, y, z, t)|_{y \rightarrow \infty}=0;
+\end{equation}
+\begin{equation}
+	\label{eq_edges_3}
+	q(x, y, z, t)|_{z \rightarrow \infty}=0; \,\,\,\,\,\, 
+	k\frac{\partial q}{\partial z}|_{z=z_{0}} = (\beta - \omega)q|_{z=z_{0}}
+\end{equation}
+
+где ... TODO
+
 \section{Необходимость анализа свойств местности}
 
-Анализ свойств местности, прилегающей к \ac{aes}, является важной задачей при разработке модели \ac{ascro}. При 
-разработке модели планируется решать полуэмперическое уравнение адвекции-диффузии, которое содержит функцию скорости 
-ветра. 
-
+Анализ свойств местности, прилегающей к \ac{aes}, является важной задачей при разработке модели \ac{ascro}.
