@@ -1,4 +1,5 @@
 \chapter{Разработка модуля анализа свойств местности, прилегающей к \ac{aes}}
+\label{chapter_surf_type}
 
 \section{Модель переноса радиоактивных примесей в атмосфере} 
 \label{diffusion_model}
@@ -120,7 +121,7 @@
 Для начала, необходимо открыть файл изображения топологической карты при помощи функции \textit{open()} класса 
 \textit{Image}, а затем преобразовать пиксели изображения в RGB-модель (листинг \ref{lst_image_open}):
 
-\begin{lstlisting}[caption=Открытие изображения топологической карты, label={lst_image_open}]
+\begin{lstlisting}[caption=Открытие изображения топологической карты., label={lst_image_open}]
 from PIL import Image
 img = Image.open(self.cfg.image_path)
 rgb_img = img.convert("RGB")
@@ -131,7 +132,7 @@ rgb_img = img.convert("RGB")
 оперативной памяти под набор пикселей и их загрузка в память. Для более удобной работы с пикселями дополнительно 
 преобразовываем их набор в \textit{numpy} массив (листинг \ref{lst_load}):
 
-\begin{lstlisting}[caption=Загрузка информации о пикселях изображения, label={lst_load}]
+\begin{lstlisting}[caption=Загрузка информации о пикселях изображения., label={lst_load}]
 img_pixels = rgb_img.load()
 img_pixels_np = np.array(rgb_img)
 \end{lstlisting}
@@ -140,7 +141,7 @@ img_pixels_np = np.array(rgb_img)
 местности, как: ширина изображения в пикселях, высота изображения в пикселях, координаты центрального пикселя изображения 
 и радиус изображения в пикселях (листинг \ref{lst_add_params}):
 
-\begin{lstlisting}[caption=Получение дополнительных параметров изображения топологической карты, label={lst_add_params}]
+\begin{lstlisting}[caption=Получение дополнительных параметров изображения топологической карты., label={lst_add_params}]
 pix_width = rgb_img.width
 pix_height = rgb_img.height
 img_center = [int(pix_width / 2), int(pix_height / 2)]
