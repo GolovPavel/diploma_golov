@@ -10,7 +10,7 @@
 
 \begin{equation}
     \label{eq_diffusion}
-    \frac{\partial q}{\partial t} + div(\vec{U}q) + \sigma q = Dq + f
+    \frac{\partial q}{\partial t} + div(\vec{U}q) + \lambda q = Dq + f
 \end{equation}
 
 с начальными условиями \ref{eq_diffusion_initials}:
@@ -43,8 +43,8 @@
     	- единичные векторы; $u, v, w$ - продольная, поперечная и вертикальная составляющие вектора скорости; 
     \item $D = \frac{\partial}{\partial x}(\mu \frac{\partial q}{\partial x}) 
     	+ \frac{\partial}{\partial y}(\mu \frac{\partial q}{\partial y})
-    	+ \frac{\partial}{\partial z}(k \frac{\partial q}{\partial z})$ --- коэффициент диффузии; 
-    \item $\sigma$ --- постоянная релаксации ($c^{-1}$);
+    	+ \frac{\partial}{\partial z}(k \frac{\partial q}{\partial z})$ --- оператор турбулентной диффузии; 
+    \item $\lambda$ --- постоянная распада ($c^{-1}$);
     \item $\mu(x,y,z)$ --- продольно-поперечный коэффициент турбулентной диффузии;
     \item $k(x,y,z)$ --- вертикальный коэффициент турбулентной диффузии;
     \item $f$ --- источник радиоактивной примеси;
