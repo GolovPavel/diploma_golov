@@ -16,3 +16,4 @@ practice/**/*.pdf
 *.fdb_latexmk
 *.doc#
 *.DS_Store
+~$*
