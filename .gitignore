@@ -4,6 +4,7 @@
 *.bbl
 *.out
 practice/**/*.pdf
+diploma/**/*.pdf
 *.gz
 *.toc
 *.fls
