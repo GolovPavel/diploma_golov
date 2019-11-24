@@ -1,0 +1,75 @@
+% Необходим для установки нестандартного типа документа
+\usepackage{extsizes}
+
+% Настраивает отступы от границ страницы.
+\usepackage{geometry}
+\geometry{left=3cm}
+\geometry{right=1cm}
+\geometry{top=2cm}
+\geometry{bottom=2cm}
+
+% Делаем pdf файл search­able и copy-able
+\usepackage{cmap} 
+
+% Поддержка русского языка
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+% Устанавливаем кодировку исходных файлов
+\usepackage[utf8]{inputenc}
+
+% Устанавливаем стандартным шрифтом Times New Roman
+\input{fonts/fonts_linux.tex}
+\renewcommand{\rmdefault}{ftm}
+
+% Для вставки картинок
+\usepackage{graphicx} 
+
+% Математические дополнения от АМС
+\usepackage{amssymb,amsfonts,amsmath,amsthm} 
+
+% Отделять первую строку раздела абзацным отступом тоже
+\usepackage{indentfirst} 
+
+% Улучшенное форматирование таблиц
+\usepackage{makecell}
+\usepackage{multirow} 
+
+% Нижние подчеркивания
+\usepackage{ulem} 
+ 
+ % Полуторный межстрочный интервал
+\usepackage{setspace}
+\onehalfspacing
+
+% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+
+% Настройка заголовков документа
+\input{preamble/pre_headers}
+
+% Настройка оглавления
+\input{preamble/pre_toc}
+
+% Настройка списков
+\input{preamble/pre_lists}
+
+% Настройка библиографии
+\input{preamble/pre_biblio}
+
+% Настройка списка сокращений
+\input{preamble/pre_abbreviations}
+
+% Настройка таблиц и рисунков
+\input{preamble/pre_tables_pictures}
+
+% Пакеты с дополнительными символами
+\usepackage{textcomp}
+\usepackage{gensymb}
+
+% Отступ в описании символов формул
+\renewcommand*\descriptionlabel[1]{\hspace\leftmargin$#1$}
+
+\usepackage{listings}

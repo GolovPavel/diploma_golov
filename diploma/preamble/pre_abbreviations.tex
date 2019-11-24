@@ -1,0 +1,14 @@
+\usepackage{acro}
+% Первое в спике сокращения идет короткое имя
+\acsetup{first-style=short}
+% Убираем стандартный заголовок у списка сокращений
+\DeclareInstance{acro-title}{empty}{sectioning}{name-format =}
+% Задаем расстояние между сокращениями и определениями
+\DeclareAcroListStyle{mytabular}{table}{
+  table=tabular,
+  table-spec=@{}p{2cm}p{\dimexpr\textwidth-2cm-2\tabcolsep}@{},
+}
+\acsetup{list-style=mytabular}
+
+% Сам список сокращений
+\input{abbreviations/abbreviations.tex}

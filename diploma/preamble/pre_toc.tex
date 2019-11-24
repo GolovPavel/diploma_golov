@@ -1,0 +1,30 @@
+% Настройка оглавления
+\usepackage{tocloft}
+
+% Оглавление стандартных секций
+\usepackage{tocloft}
+\renewcommand{\cfttoctitlefont}{\hspace{0.38\textwidth} \bfseries\MakeUppercase}
+\renewcommand{\cftbeforetoctitleskip}{-1em}
+\renewcommand{\cftchapfont}{\normalsize\bfseries \MakeUppercase{\chaptername} }
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecfont}{\hspace{31pt}}
+\renewcommand{\cftsubsecfont}{\hspace{11pt}}
+\renewcommand{\cftbeforechapskip}{1em}
+\renewcommand{\cftparskip}{-1mm}
+\renewcommand{\cftdotsep}{2}
+\setcounter{tocdepth}{2} 
+
+% Оглавление специальных секций (введение, заключение, ...)
+\newcommand{\empline}{\mbox{}\newline}
+\newcommand{\likechapterheading}[1]{ 
+    \begin{center}
+    \textbf{\MakeUppercase{#1}}
+    \end{center}}
+
+\makeatletter
+    \renewcommand{\@dotsep}{2}
+    \newcommand{\l@likechapter}[2]{{\@dottedtocline{0}{0pt}{0pt}{\bfseries #1}{\bfseries #2}}}
+\makeatother
+\newcommand{\likechapter}[1]{    
+    \likechapterheading{#1}    
+    \addcontentsline{toc}{likechapter}{\MakeUppercase{#1}}}

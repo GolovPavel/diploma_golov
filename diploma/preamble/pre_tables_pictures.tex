@@ -1,0 +1,18 @@
+% Настройка таблиц и рисунков
+\usepackage{multirow}
+\usepackage[tableposition=top]{caption}
+
+% Подписи к таблицам и рисункам
+\DeclareCaptionLabelFormat{gostfigure}{Рисунок #2}
+\DeclareCaptionLabelFormat{gosttable}{Таблица #2}
+\DeclareCaptionLabelSeparator{gost}{~---~}
+\captionsetup{labelsep=gost}
+\captionsetup[figure]{labelformat=gostfigure}
+\captionsetup[table]{labelformat=gosttable}
+\captionsetup{justification=raggedright,singlelinecheck=false}
+
+% Особый тип колонок
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+% Путь к картинкам
+\graphicspath{{img/}}
