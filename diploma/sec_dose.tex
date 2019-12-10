@@ -278,16 +278,55 @@ $z_k$ - координаты расчетного узла на сетке.
 
 \begin{equation}
         \label{eq_avg_E}
+<<<<<<< HEAD
         \overline{E_{\alpha}} = \frac{\sum_{l=1}^{L}{E_{\alpha}^{l}}\eta_{\alpha}^{l}}{\sum_{l=1}^{L}{\eta_{\alpha}^{l}}
+=======
+        \overline{E_{\alpha}} = \frac{\sum_{l=1}^{L}{E_{\alpha}^{l}}\eta_{\alpha}^{l}}{\sum_{l=1}^{L}{\eta_{\alpha}^{l}}}
+>>>>>>> ab5196e03122545e1b5687e7c6c6bbc1c112cf40
 \end{equation}
 
 Данные о спектрах гамма - излучения и о квантовых выходах гамма - квантов с определенными энергиями получены из 
 источника \cite{nuc_data}.
 
 Коэффициенты $a$ и $b$ в формуле \ref{eq_berger} для расчета фактора накопления для воздуха представлены в таблице 
+<<<<<<< HEAD
 \ref{...}.
 
 \section{Заключение разработки модуля расчета мощности дозы внешнего гамма - излучения}
 
 В данной главе были
 
+=======
+\ref{table_berger_koeff}.
+
+\begin{table}[ht]
+    \setlength{\extrarowheight}{1mm} 
+    \caption{Коэффициенты $a$ и $b$ в формуле Бергера для расчета фактора накопления в воздухе \cite{mashkovich}.}
+    \label{table_berger_koeff}
+    \centering
+    \begin{tabular}{|M{0.28\textwidth}|M{0.28\textwidth}|M{0.28\textwidth}|}
+    \hline E$_0$, МэВ & $a$ & $b$ \\
+    \hline 0,10 & 5,93 & 0,113 \\
+    \hline 0,15 & 4,70 & 0,121 \\
+    \hline 0,20 & 3,94 & 0,113 \\
+    \hline 0,30 & 3,10 & 0,094 \\
+    \hline 0,40 & 2,61 & 0,079 \\
+    \hline 0,50 & 2,29 & 0,067 \\
+    \hline 0,80 & 1,71 & 0,045 \\
+    \hline 1,00 & 1,50 & 0,035 \\
+    \hline 1,50 & 1,16 & 0,021 \\
+    \hline 2,00 & 0,97 & 0,013 \\
+    \hline 3,00 & 0,75 & 0,005 \\
+    \hline 4,00 & 0,61 & 0,001 \\
+    \hline 5,00 & 0,53 & -0,002 \\
+    \hline 8,00 & 0,37 & -0,004 \\
+    \hline 10,00 & 0,31 & -0,004 \\
+    \hline 
+    \end{tabular}
+\end{table}
+
+
+\section{Заключение разработки модуля расчета мощности дозы внешнего гамма - излучения}
+
+% TODO write conclusion
+>>>>>>> ab5196e03122545e1b5687e7c6c6bbc1c112cf40
