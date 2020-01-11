@@ -21,5 +21,6 @@ print(u)
 plt.plot(h, u)
 plt.xlabel('h, м', fontsize=16)
 plt.ylabel('u, м/с', fontsize=16)
+plt.grid()
 
 plt.show()
