@@ -612,10 +612,10 @@ class DoseCalculator:
 
         if is_debug:
             for nuc_name, nuc_dose in nuc_doses.items():
-                print("{}: {:.3f} мЗв/ч".format(nuc_name, nuc_dose))
+                print("{}: {:.3f} mZv/h".format(nuc_name, nuc_dose))
             print(separator)
 
-        print("Total dose: {:.3f} мЗв/ч\n".format(sum(nuc_doses.values())))
+        print("Total dose: {:.3f} mZv/h\n".format(sum(nuc_doses.values())))
         print()
 \end{lstlisting}
 
