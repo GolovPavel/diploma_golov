@@ -524,4 +524,134 @@ class MeshGenerator:
         return volume
 \end{lstlisting}
 
+\begin{lstlisting}[caption=Исходный код модуля расчета мощности эквивалентной дозы внешнего гамма-излучения, 
+                    label={lst_dose_calc}, basicstyle=\scriptsize]
+
+                    import math
+
+import numpy as np
+from dolfin import Mesh
+
+from config import Config
+
+
+class DoseCalculator:
+    u"""Класс, написанный для демонстрации работы алгоритма расчета мощности дозы гамма-излучения в
+    местах расположения датчиков фотонного излучения. В дальнейшем планируется внедрение в модель АСКРО."""
+
+    def __init__(self, config_file):
+        # Инициализация конфигурации
+        self.cfg = Config(config_file)
+        self.cfg.init_mesh()
+        self.cfg.init_pic()
+        self.cfg.init_soft()
+        self.cfg.init_koef()
+        self.cfg.init_parameters()
+
+        self.__init_mesh()
+        self.__init_det()
+        self.__init_conc()
+
+    def __init_mesh(self):
+        u"""Инициализация расчетной сетки"""
+        self.mesh = Mesh(self.cfg.xml_3d_path)
+        self.coords = self.mesh.coordinates()
+
+    def __init_conc(self):
+        u"""Инициализация тестовых конентраций радионуклидов в узлах расчетной сетки
+        В тестовой задаче считаем, что концентрация всех радионуклидов равна 1"""
+        self.conc = np.zeros(self.coords.shape[0])
+        # Для тестовой задачи установим концентрацию в каждой точке расчетной сетки [1/м^3]
+        self.conc[:] = 1
+
+    def __init_det(self):
+        u"""Инициализация параметров детектора фотонного излучения"""
+        # Координаты, в которых располагаем детектор гамма-излучения. В тестовой задаче используем только 1 детектор
+        self.det_coords = self.cfg.det_coords
+        # Радиус, в котором производим детектирование гамма - излучения (м)
+        self.det_r = self.cfg.det_r
+        # Высота, в пределах которой производим детектирование гамма-изулчения (м)
+        self.det_h = self.cfg.det_h
+
+    def __calc_dose_rate(self, det_coords):
+        u"""Рассчет мощности дозы гамма-излучения в точке det_coords от источников, расположенных
+        в цилиндре вокруг детектора радиуса self.det_r и высоты self.det_h (Елохин, формула 6.50)."""
+
+        # Находим координаты точек, которые попадают в область детектора
+        coords_T = self.coords.T
+        xy2 = (coords_T[0] - det_coords[0]) ** 2 + (coords_T[1] - det_coords[1]) ** 2
+        det_point_idx = np.where((xy2 <= self.det_r ** 2) & (self.coords[:, 2] <= self.det_h))[0]
+
+        # Находим расстояния от точек, расположенных в области детектирования, до детектора
+        coords_T = self.coords[det_point_idx].T
+        xyz2 = (coords_T[0] - det_coords[0]) ** 2 + (coords_T[1] - det_coords[1]) ** 2 + (
+                coords_T[2] - det_coords[2]) ** 2
+        R = np.sqrt(xyz2)
+
+        nuc_doses = {}
+        # Итерируем по группам нуклидов
+        for group_name in self.cfg.yaml_names:
+            group_nuclides = self.cfg.__dict__[group_name].nuc
+
+            # Итерируем по каждому нуклиду из группы
+            for nuc_name, nuc_params in group_nuclides.items():
+                # Массив энергий гамма-квантов (МЭв).
+                E_g = np.array(group_nuclides[nuc_name]['E_g']) * 1e-3
+                # Массив квантовых выходов, соответствующие E_g
+                I_g = np.array(group_nuclides[nuc_name]['I_g'])
+                # Средняя энергия гамма-квантов, рассчитанная как средневзвешанное по квантовому выходу
+                E_avg = np.sum(E_g * I_g) / np.sum(I_g)
+                # Коэффициент ослабления фотонного излучения (м^-1). Умножение на 10**2 - перевод из см^-1 в м^-1
+                mu = np.interp(E_avg, self.cfg.muE, self.cfg.mu) * 10 ** 2
+                # Коэффициент поглощения фотонного излучения (м^-1). Умножение на 10**2 - перевод из см^-1 в м^-1
+                mu_a = np.interp(E_avg, self.cfg.muE, self.cfg.muA) * 10 ** 2
+                # Коэффициент a в формуле Бергера для расчета фактора накопления воздуха
+                a = np.interp(E_avg, self.cfg.muE, self.cfg.a)
+                # Коэффициент b в формуле Бергера для расчета фактора накопления воздуха
+                b = np.interp(E_avg, self.cfg.muE, self.cfg.b)
+
+                s = 0
+                for i, point_idx in enumerate(det_point_idx):
+                    cur_R = R[i]
+                    # Считаем фактор накопления в воздухе по формуле Бергера
+                    B = 1 + a * mu * cur_R * math.exp(b * mu * cur_R)
+                    # Закон обратных квадратов применим только при R >= 1. При R -> 0 доза стремится к бесконечности
+                    if cur_R < 1:
+                        continue
+                    add = self.conc[point_idx] * B / cur_R ** 2 * math.exp(-mu * cur_R)
+                    s += add
+
+                dose_power = 1.458 * 1e3 * mu_a * np.sum(E_g * I_g) * s
+                nuc_doses[nuc_name] = dose_power
+
+        return nuc_doses
+
+    def calc_all_detectors(self, debug=False):
+        u"""Метод для рассчета мощности дозы гамма-излучения для всех детекторов, указанных в конфигурационном
+        файле params.yaml в опции det_coords и печать доз в std.out"""
+        for det_coords in self.det_coords:
+            nuc_doses = self.__calc_dose_rate(det_coords)
+            self.__print_doses(det_coords, nuc_doses, debug)
+
+    @staticmethod
+    def __print_doses(det_coords, nuc_doses, is_debug):
+        u"""Печать рассчитанных доз nuc_doses для детектора с координатами det_coords
+        Если установлен флаг is_debug, то происходит печать доз для всех нуклидов в словаре, иначе
+        происходит печать только полной дозы гамма-излучения"""
+
+        separator = "------------------------"
+        print("Detector with coordinates {}".format(det_coords))
+        print(separator)
+
+        if is_debug:
+            for nuc_name, nuc_dose in nuc_doses.items():
+                print("{}: {:.3f} мЗв/ч".format(nuc_name, nuc_dose))
+            print(separator)
+
+        print("Total dose: {:.3f} мЗв/ч\n".format(sum(nuc_doses.values())))
+        print()
+
+\end{lstlisting}
+
+
 \clearpage
