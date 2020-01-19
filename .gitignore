@@ -18,3 +18,4 @@ diploma/**/*.pdf
 *.doc#
 *.DS_Store
 ~$*
+*.dvi

@@ -1,0 +1,3 @@
+#!/bin/bash
+docker start trusting_cohen &
+docker exec -ti trusting_cohen bash
